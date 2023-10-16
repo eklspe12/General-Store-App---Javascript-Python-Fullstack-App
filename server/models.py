@@ -30,11 +30,12 @@ class Accessory(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Accessory {self.name}>'
     
-class Review(db.Model, SerializerMixin):
-    __tablename__ = 'reviews'
+class GrillReview(db.Model, SerializerMixin):
+    __tablename__ = 'grill_reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    text = db.Column(db.String)
+    rating = db.Column(db.Integer)
 
     # one-to-many relationship with grills
     # one-to-many relationship with accessories
@@ -43,6 +44,22 @@ class Review(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Review>'
     
+class AccessoryReview(db.Model, SerializerMixin):
+    __tablename__ = 'accessory_reviews'
+
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String)
+    rating = db.Column(db.Integer)
+
+
+    # one-to-many relationship with grills
+    # one-to-many relationship with accessories
+
+
+
+    def __repr__(self):
+        return f'<Review>'
+
 
 class Location(db.Model, SerializerMixin):
     __tablename__ = 'locations'
