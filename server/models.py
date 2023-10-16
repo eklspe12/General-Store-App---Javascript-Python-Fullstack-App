@@ -8,6 +8,7 @@ class Grill(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    description = db.Column(db.String)
     image = db.Column(db.String)
     price = db.Column(db.Float)
 
@@ -21,6 +22,7 @@ class Accessory(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    description = db.Column(db.String)
     image = db.Column(db.String)
     price = db.Column(db.Float)
 
@@ -35,7 +37,7 @@ class GrillReview(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String)
-    rating = db.Column(db.Integer)
+    rating = db.Column(db.Float)
 
     # one-to-many relationship with grills
     # one-to-many relationship with accessories
@@ -49,7 +51,7 @@ class AccessoryReview(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String)
-    rating = db.Column(db.Integer)
+    rating = db.Column(db.Float)
 
 
     # one-to-many relationship with grills
