@@ -11,7 +11,7 @@ function App() {
 const [grills, setGrills] = useState([])
 
 useEffect (() => {
-  fetch("http://127.0.0.1:5555/grills")
+  fetch("http://127.0.0.1:5555/products")
   .then(r => {
     if (r.ok) {
       return r.json();
@@ -24,7 +24,7 @@ useEffect (() => {
 }, []);
 
 function handleDeleteGrill(id) {
-  fetch(`http://127.0.0.1:5555/grills/${id}`, {
+  fetch(`http://127.0.0.1:5555/products/${id}`, {
   method: "DELETE", 
   })
   .then((r) => r.json())

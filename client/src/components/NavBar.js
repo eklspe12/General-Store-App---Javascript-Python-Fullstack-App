@@ -6,14 +6,10 @@ return (
        <ul>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/store">Store</Link>
-    
+        <Link to="/store">Store</Link> 
     </ul>
-    
-    </nav>
-   
+    </nav>  
 )
-
 }
 
 export default NavBar
