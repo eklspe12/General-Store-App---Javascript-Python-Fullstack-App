@@ -15,7 +15,7 @@ DATABASE = os.environ.get(
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+app.jsonify_compatibility = False
 
 migrate = Migrate(app, db)
 
@@ -110,7 +110,7 @@ class LocationById(Resource):
             return make_response({'error':'Location not found.'}, 404)
         return make_response(location.to_dict(), 200)
     
-api.add_resource(Locations, '/locations/<int:id>')
+api.add_resource(LocationById, '/locations/<int:id>')
 
 # Didn't see need for any other CRUD actions on location since user can't add, change, or delete locations
 

@@ -38,17 +38,17 @@ function handleDeleteGrill(id) {
 
 const handleSearch = (e) => {
   e.preventDefault()
-
-  fetch(`http://127.0.0.1:5555/products/${search}`)
+// the url for this funciton probably needs to be changed
+  fetch(`http://127.0.0.1:5555/products?search=${search}`)
   .then(r => r.json())
   .then(data => {
-    if (data.girlls === null) {
+    if (data.grills === null) {
       setGrills([])
       console.log('Product not found.')
     }
   })
   .catch((error) => {
-    console.error(`${error}`)
+    console.error(error)
   })
   setSearchMade(true)
 }

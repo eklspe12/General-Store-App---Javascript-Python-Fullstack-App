@@ -94,7 +94,7 @@ class Location(db.Model, SerializerMixin):
 
     serialize_rules = ('stocks.location', '-products.locations')
 
-    @validates('adress')
+    @validates('address')
     def validate_address(self, key, address):
         if not address or len(address) <15:
             raise ValueError('Must have address over 15 characters long.')
