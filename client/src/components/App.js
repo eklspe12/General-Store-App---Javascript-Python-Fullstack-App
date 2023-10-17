@@ -9,6 +9,8 @@ import Store from "./components/Store";
 function App() {
 
 const [grills, setGrills] = useState([])
+const [search, setSearch] = useState(null)
+const [searchMade, setSearchMade] = useState(false)
 
 useEffect (() => {
   fetch("http://127.0.0.1:5555/products")
@@ -34,13 +36,35 @@ function handleDeleteGrill(id) {
   });
 }
 
+const handleSearch = (e) => {
+  e.preventDefault()
+
+  fetch(`http://127.0.0.1:5555/products/${search}`)
+  .then(r => r.json())
+  .then(data => {
+    if (data.girlls === null) {
+      setGrills([])
+      console.log('Product not found.')
+    }
+  })
+  .catch((error) => {
+    console.error(`${error}`)
+  })
+  setSearchMade(true)
+}
+
+const handleChange = (e) => {
+  setSearch(e.target.value)
+}
+
 return (<>
   <NavBar/>
   <div className="container">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
-        <Route path="/store" element={<Store grills={grills}/>}/>
+        <Route path="/store" element={<Store grills={grills} handleChange={handleChange} handleSearch={handleSearch} search={search} searchMade={searchMade}
+        />}/>
       </Routes>
   </div></>
 );
