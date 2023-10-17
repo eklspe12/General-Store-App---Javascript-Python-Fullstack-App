@@ -52,7 +52,6 @@ class Stock(db.Model, SerializerMixin):
     __tablename__ = 'stocks'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
 
     product_id = db.Column(db.Integer, db.ForeignKey(
         'products.id'), nullable=False)
@@ -78,7 +77,7 @@ class Stock(db.Model, SerializerMixin):
     def validates_quantity(self, key, quantity):
         if not quantity or quantity < 0:
             raise ValueError('Must include number for quantity. If item is out of stock enter 0.')
-
+        return quantity
 
     def __repr__(self):
         return f'<Stock {self.name}>'
