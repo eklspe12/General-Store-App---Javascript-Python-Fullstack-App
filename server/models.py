@@ -18,7 +18,7 @@ class Product(db.Model, SerializerMixin):
 
     stocks = db.relationship('Stock', backref='product', cascade='all, delete-orphan')
 
-    serialize_rules = ('stocks.products', '-locations.products')
+    serialize_rules = ('stocks.product', '-locations.products')
 
     @validates('name')
     def validate_name(self, key, name):
