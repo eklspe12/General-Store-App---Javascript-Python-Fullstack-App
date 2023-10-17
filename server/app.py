@@ -90,7 +90,7 @@ class ProductById(Resource):
         return make_response({}, 204)
 
 
-api.add_resource(ProductById, '/product/<int:id>')
+api.add_resource(ProductById, '/products/<int:id>')
 
 
 class Locations(Resource):
@@ -115,4 +115,3 @@ api.add_resource(LocationById, '/locations/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
-
