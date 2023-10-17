@@ -90,10 +90,6 @@ class ProductById(Resource):
 api.add_resource(ProductById, '/product/<int:id>')
 
 
-
-
-
-
 class Locations(Resource):
     def get(self):
         locations = [location.to_dict(rules=('-products', '-stock'))for location in Location.query.all()]
