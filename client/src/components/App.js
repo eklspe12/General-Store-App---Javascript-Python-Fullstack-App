@@ -1,44 +1,33 @@
 import React, { useEffect, useState } from "react";
-import {Link, Switch, Route } from "react-router-dom";
+import {Link, Switch, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar";
-// import Home from "./components/Home";
-// import About from "./components/About";
 import Store from "./Store";
+import Home from "./Home";
+import LocationFinder from "./LocationFinder";
 
 
 function App() {
 
-const [grills, setGrills] = useState([])
+const [products, setProducts] = useState([])
 const [search, setSearch] = useState(null)
 const [searchMade, setSearchMade] = useState(false)
 
 useEffect(() => {
   fetch("/products")
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        console.error("Response status:", response.status);
-        console.error("Response status text:", response.statusText);
-        return Promise.reject("Fetch failed");
-      }
-    })
-    .then((grills) => {
-      setGrills(grills);
-    })
-    .catch((error) => {
-      console.error("Fetch error:", error);
-    });
+    .then((r) => r.json())
+    .then((products) => {setProducts(products)
+    console.log(products)} )
+
 }, []);
 
-// function handleDeleteGrill(id) {
+// function handleDeleteProduct(id) {
 //   fetch(`http://127.0.0.1:5555/products/${id}`, {
 //   method: "DELETE", 
 //   })
 //   .then((r) => r.json())
 //   .then(() => {
-//     const updatedGrills = grills.filter((g) => g.id !== id);
-//     setGrills(updatedGrills)
+//     const updatedProducts = products.filter((p) => p.id !== id);
+//     setProducts(updatedProducts)
 //   });
 // }
 
@@ -49,7 +38,7 @@ useEffect(() => {
 //   .then(r => r.json())
 //   .then(data => {
 //     if (data.products === null) {
-//       setGrills([])
+//       setProducts([])
 //       console.log('Product not found.')
 //     }
 //   })
@@ -67,11 +56,12 @@ return (<>
   <NavBar/>
   <div className="container">
       <Route>
-        {/* <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<About/>}/> */}
-        <Route path="/store" element={<Store grills={grills} search={search} searchMade={searchMade}
+        <Route path="/" element={<Home/>}/>
+        <Route path="/location_finder" element={<LocationFinder/>}/>
+        <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade}
         />}/>
       </Route>
+      <Store products={products}/>
   </div></>
 );
 }
