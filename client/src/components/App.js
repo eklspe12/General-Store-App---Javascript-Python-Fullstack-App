@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, Switch, Route } from "react-router-dom";
+import {Link, Switch, Route, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
 import Store from "./Store";
 import Home from "./Home";
@@ -13,6 +13,7 @@ const [products, setProducts] = useState([])
 const [search, setSearch] = useState(null)
 const [searchMade, setSearchMade] = useState(false)
 const [originalProducts, setOriginalProducts] = useState([])
+const {route } = useParams();
 
 useEffect(() => {
   fetch("/products")
@@ -22,8 +23,7 @@ useEffect(() => {
       setOriginalProducts(products)
       console.log(products)} )
 
-}, []);
-
+}, [route]);
 
 const handleSearch = (e) => {
   e.preventDefault();
@@ -52,8 +52,12 @@ return (<>
   <NavBar/>
   <div className="container">
       <Switch>
-        <Route exact path="/" element={Home}/>
-        <Route path="/location_finder" element={LocationFinder}/>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route exact path="/">
+          <LocationFinder/>
+        </Route>
         <Route path="/store">
           <Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch} setProducts={setProducts}/>
         </Route>
