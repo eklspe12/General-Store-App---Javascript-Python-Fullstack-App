@@ -1,6 +1,13 @@
 import ProductList from './ProductList'
+import AddProduct from './AddProduct';
 
-const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
+const Store = ({products, handleSearch, handleChange, search, searchMade, setProducts}) => {
+
+    function handleDelete (productToDelete) {
+        const updatedProducts = products.filter((p) => 
+        p.id !== productToDelete.id);
+        setProducts(updatedProducts)
+    }
 
     return (
         <div className='searchBG'>
@@ -12,9 +19,9 @@ const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
             
             <div className='gridWrapper'>
                 <div className='storeContainer'>
-                    {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products}/></div>)}</div>
+                    {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products} onDelete={handleDelete}/></div>)}</div>
             </div>
-        
+            <AddProduct products={products} setProducts={setProducts} />
         </div>
     )
 }
@@ -22,4 +29,3 @@ const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
 export default Store
 
 
-// 

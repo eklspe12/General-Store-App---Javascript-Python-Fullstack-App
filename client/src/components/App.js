@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Store from "./Store";
 import Home from "./Home";
 import LocationFinder from "./LocationFinder";
+import Modify from "./Modify";
 
 
 function App() {
@@ -23,16 +24,6 @@ useEffect(() => {
 
 }, []);
 
-// function handleDeleteProduct(id) {
-//   fetch(`http://127.0.0.1:5555/products/${id}`, {
-//   method: "DELETE", 
-//   })
-//   .then((r) => r.json())
-//   .then(() => {
-//     const updatedProducts = products.filter((p) => p.id !== id);
-//     setProducts(updatedProducts)
-//   });
-// }
 
 const handleSearch = (e) => {
   e.preventDefault();
@@ -65,6 +56,7 @@ return (<>
         <Route path="/location_finder" element={<LocationFinder/>}/>
         <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch}/>}/>
       </Route>
+      <Store products={products} handleSearch={handleSearch} handleChange={handleChange} search={search} searchMade={searchMade} setProducts={setProducts}/>
   </div></>
 );
 }

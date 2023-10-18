@@ -74,20 +74,17 @@ class ProductById(Resource):
         return make_response(product.to_dict(), 200)
     
     def patch(self, id):
-        product = Product.query.filter(Product.id == id).one_or_none()
-        if product is None:
-            return make_response({'error':'Product not found'}, 404)
-        
-        fields = request.get_json()
-        try:
-            setattr(product, 'name', fields['name'])
-            setattr(product, 'description', fields['description'])
-            setattr(product, 'image', fields['image'])
-            setattr(product, 'price', fields['price'])
-            return product.to_dict(), 202
-        
-        except ValueError:
-            return make_response({'errors':['validation errors']}, 400)
+        product = Product.query.get(id)
+        if not product:
+            return jsonify({'error': 'Product not found'}), 404
+
+        data = request.get_json()
+        for field, value in data.items():
+            if hasattr(product, field):
+                setattr(product, field, value)
+
+        db.session.commit()
+        return jsonify({'message': 'Product updated successfully'}), 200
         
     def delete(self, id):
         product = Product.query.filter(Product.id == id).one_or_none()
