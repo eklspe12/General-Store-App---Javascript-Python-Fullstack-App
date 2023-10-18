@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {Link, Switch, Route, Routes } from "react-router-dom";
+import {Link, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Store from "./Store";
 import Home from "./Home";
 import LocationFinder from "./LocationFinder";
-import Modify from "./Modify";
+
 
 
 function App() {
@@ -51,12 +51,14 @@ useEffect(() => {
 return (<>
   <NavBar/>
   <div className="container">
-      <Route>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/location_finder" element={<LocationFinder/>}/>
-        <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch}/>}/>
-      </Route>
-      <Store products={products} handleSearch={handleSearch} handleChange={handleChange} search={search} searchMade={searchMade} setProducts={setProducts}/>
+      <Switch>
+        <Route exact path="/" element={Home}/>
+        <Route path="/location_finder" element={LocationFinder}/>
+        <Route path="/store">
+          <Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch} setProducts={setProducts}/>
+        </Route>
+      </Switch>
+      {/* <Store products={products} handleSearch={handleSearch} handleChange={handleChange} search={search} searchMade={searchMade} setProducts={setProducts}/> */}
   </div></>
 );
 }

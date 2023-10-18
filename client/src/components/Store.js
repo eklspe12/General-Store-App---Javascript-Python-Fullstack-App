@@ -19,7 +19,7 @@ const Store = ({products, handleSearch, handleChange, search, searchMade, setPro
             
             <div className='gridWrapper'>
                 <div className='storeContainer'>
-                    {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products} onDelete={handleDelete}/></div>)}</div>
+                    {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products} onDelete={handleDelete} setProducts={setProducts}/></div>)}</div>
             </div>
             <AddProduct products={products} setProducts={setProducts} />
         </div>
