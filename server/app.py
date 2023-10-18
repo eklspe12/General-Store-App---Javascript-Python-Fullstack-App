@@ -49,8 +49,8 @@ class Products(Resource):
             db.session.add(product)
             db.session.commit()
             return make_response(product.to_dict(), 201)
-        except ValueError:
-            return make_response({'errors':['validation errors']}, 400)
+        except ValueError as e:
+            return make_response({'error':e.__str__()}, 400)
 
 
 

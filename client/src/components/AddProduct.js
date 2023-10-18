@@ -22,62 +22,47 @@ function addProduct(newProduct) {
 }
 
 
-async function postProduct() {
-    const config = {
-        method: "POST",
-        headers: {
-            "Content-Type":"application/json"
-        },
-        body: JSON.stringify(formData),
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newProduct = {
+        name:formData.name,
+        description:formData.description,
+        image:formData.image,
+        price:formData.price,
     };
-    const res = await fetch('/products', config);
-    if (res.ok) {
-        const newPro = await res.json();
-        onProductRequest(newPro);
-        setFormData({
-            name:"",
-            description:"",
-            image:"",
-            price:"",
+
+    try {
+        // Send a POST request to the server
+        console.log("Submitting new product:", newProduct);
+
+        const response = await fetch('/products', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newProduct),
         });
-        setErrors([]);
-    } else {
-        const messages = await res.json();
-        setErrors(messages.erros)
-    }
-}
-
-
-// const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const newProduct = {
-//         name:formData.name,
-//         description:formData.description,
-//         image:formData.image,
-//         price:formData.price,
-//     }
-
-//     fetch('/products', {
-//         method: "POST",
-//         headers :{
-//             "Content-Type":"application/json",
-//         },
-//         body: JSON.stringify(newProduct),
-//     })
-//     .then((r) => r.json())
-//     .then((data) => {
-//     addProduct(data);
-//     })
-//     .catch((error) => {
-//         console.error(`Error adding product: ${error}`);
-//     })
-//     setFormData({
-//         name:"",
-//         description:"",
-//         image:"",
-//         price:""
-//     })
-// };
+  
+        if (response.ok) {
+          // If the request was successful, add the new product to the state
+          const data = await response.json();
+          setProducts([...products, data]);
+  
+          // Reset the form fields and errors
+          setFormData({
+            name: "",
+            image: "",
+            description: "",
+            price: "",
+          });
+        } else {
+          // Handle errors, e.g., show a message to the user
+          console.error('Failed to add product');
+        }
+      } catch (error) {
+        console.error(`Error adding product: ${error}`);
+      }
+    };
 
 return (
     <form onSubmit={handleSubmit}>
@@ -92,7 +77,7 @@ return (
                 <label htmlFor="price">Price</label>
                 <input name="price" value={formData.price} onChange={handleChange}/>   
         </div>
-        <button type="submit" onClick={handleSubmit}>Add Product</button>
+        <button type="submit">Add Product</button>
     </form>
 )
 
