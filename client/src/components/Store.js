@@ -1,18 +1,24 @@
-import GrillList from './GrillList'
+import ProductList from './ProductList'
 
-const Store = ({grills, handleSearch, handleChange, search, searchMade}) => {
+const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
 
     return (
-        <div>
-            <form onSubmit={handleSearch}>
-                <input placeholder='Search available items...' value={search} onChange={handleChange} type='text'></input>
-                <input type="submit" value="Search products."></input>
+        <div className='searchBG'>
+            <h1>Order Online!</h1>
+            <form onSubmit={handleSearch} className='searchBar'>
+                <input className='searchInput' placeholder='Search available items...' value={search} onChange={handleChange} type='text'></input>
+                <input className='searchBtn' type="submit" value="Search products."></input>
             </form>
-            <div>
-                {(searchMade && grills.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><GrillList grills={grills}/></div>)}
+            
+            <div className='gridWrapper'>
+                <div className='storeContainer'><ProductList products={products}/></div>
             </div>
+        
         </div>
     )
 }
 
 export default Store
+
+
+// {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products}/></div>)}

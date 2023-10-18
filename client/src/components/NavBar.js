@@ -5,7 +5,7 @@ return (
     <nav className="nav">
        <ul>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/location_finder">Location Finder</Link>
         <Link to="/store">Store</Link> 
     </ul>
     </nav>  

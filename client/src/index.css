@@ -5,3 +5,149 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+.nav {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)); /* Washed black fade background */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav a {
+  color: white; /* White text color */
+  text-decoration: none;
+  height: 100%;
+  align-items: center;
+  padding: 0.25rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White glow text shadow */
+}
+
+.nav a:hover{
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #332e31, 0 0 40px #010101, 0 0 50px #dadadf;
+}
+
+/* .searchBG{
+  /* add image later */
+/* }  */
+
+.searchBar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 600px;
+  top: 2%;
+  background: rgba(39, 35, 35, 0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px #feffff;
+}
+
+
+.searchInput{
+  background: transparent;
+  width: 500px;
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  font-size: 20px;
+  color: white;
+  
+}
+  ::placeholder{
+    color: white;
+}
+
+.searchBtn{
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: white;
+}
+
+.searchBtn:hover{
+  font-size: 20px;
+  cursor: pointer;
+  transition: 500ms;
+}
+
+
+.storeContainer{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* row-gap: 10px; */
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.searchError{
+  position: absolute;
+  margin-top: 60px;
+  margin-left: 50px;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  color: white;
+  font-family: helvetica;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #332e31, 0 0 40px #010101, 0 0 50px #dadadf, 0 0 60px #2674cd, 0 0 70px #01fcf8;
+}
+
+.productCard{
+  text-align: center;
+  backface-visibility: hidden;
+  transition: transform 1s ease;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px dotted #80808084; 
+  height:520px;
+  width: 320px;
+  color:black;
+  font-family: Verdana;
+  box-shadow: 0 0 5px #feffff;
+}
+
+.productCard h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 100;
+}
+
+.productCard h4 {
+  display: flex;
+  text-align: left;
+  font-weight: 100;
+  padding-left: 5px;
+}
+
+.productCard img {
+  
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 0 5px #feffff;
+}
+
+.gridWrapper{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+ 
+}
