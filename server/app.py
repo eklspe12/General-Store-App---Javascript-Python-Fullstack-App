@@ -56,6 +56,14 @@ class Products(Resource):
 
 api.add_resource(Products, '/products')
 
+class ProductByName(Resource):
+    def get(self, name):
+        products = Product.query.filter(Product.name == name)
+        if products is None:
+            return make_response({'error':'Product not found'}, 404)
+        return make_response(products.to_dict(), 200)
+    
+api.add_resource(ProductByName, '/products/search/<name>')
 
 
 class ProductById(Resource):

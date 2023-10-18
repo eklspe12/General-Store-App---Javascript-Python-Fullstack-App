@@ -11,7 +11,8 @@ const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
             </form>
             
             <div className='gridWrapper'>
-                <div className='storeContainer'><ProductList products={products}/></div>
+                <div className='storeContainer'>
+                    {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products}/></div>)}</div>
             </div>
         
         </div>
@@ -21,4 +22,4 @@ const Store = ({products, handleSearch, handleChange, search, searchMade}) => {
 export default Store
 
 
-// {(searchMade && products.length === 0) ? (<p className="searchError">No result's found, please check spelling.</p>) : (<div><ProductList products={products}/></div>)}
+// 
