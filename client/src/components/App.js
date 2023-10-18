@@ -11,12 +11,15 @@ function App() {
 const [products, setProducts] = useState([])
 const [search, setSearch] = useState(null)
 const [searchMade, setSearchMade] = useState(false)
+const [originalProducts, setOriginalProducts] = useState([])
 
 useEffect(() => {
   fetch("/products")
     .then((r) => r.json())
-    .then((products) => {setProducts(products)
-    console.log(products)} )
+    .then((products) => {
+      setProducts(products)
+      setOriginalProducts(products)
+      console.log(products)} )
 
 }, []);
 
@@ -34,31 +37,25 @@ useEffect(() => {
 const handleSearch = (e) => {
   e.preventDefault();
 
-  // Check if a search query exists before making the request
   if (search) {
-    fetch(`/products?search=${search}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const filteredProducts = originalProducts.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase()));
+    setProducts(filteredProducts);
   } else {
-    // If no search query is provided, fetch all products or setProducts to the original product list
-    fetch("/products")
-      .then((r) => r.json())
-      .then((products) => {
-        setProducts(products);
-      });
+    setProducts(originalProducts)
   }
-
   setSearchMade(true);
 };
 
 const handleChange = (e) => {
-  setSearch(e.target.value)
+  setSearch(e.target.value, () =>{
+  // console.log(search)
+  });
 }
+
+useEffect(() => {
+  console.log(search);
+}, [search]);
 
 return (<>
   <NavBar/>
@@ -68,7 +65,6 @@ return (<>
         <Route path="/location_finder" element={<LocationFinder/>}/>
         <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch}/>}/>
       </Route>
-      <Store products={products}/>
   </div></>
 );
 }
