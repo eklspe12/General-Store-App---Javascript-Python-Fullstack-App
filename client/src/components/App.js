@@ -31,26 +31,34 @@ useEffect(() => {
 //   });
 // }
 
-// const handleSearch = (e) => {
-//   e.preventDefault()
-// // the url for this funciton probably needs to be changed
-//   fetch(`http://127.0.0.1:5555/products?search=${search}`)
-//   .then(r => r.json())
-//   .then(data => {
-//     if (data.products === null) {
-//       setProducts([])
-//       console.log('Product not found.')
-//     }
-//   })
-//   .catch((error) => {
-//     console.error(error)
-//   })
-//   setSearchMade(true)
-// }
+const handleSearch = (e) => {
+  e.preventDefault();
 
-// const handleChange = (e) => {
-//   setSearch(e.target.value)
-// }
+  // Check if a search query exists before making the request
+  if (search) {
+    fetch(`/products?search=${search}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  } else {
+    // If no search query is provided, fetch all products or setProducts to the original product list
+    fetch("/products")
+      .then((r) => r.json())
+      .then((products) => {
+        setProducts(products);
+      });
+  }
+
+  setSearchMade(true);
+};
+
+const handleChange = (e) => {
+  setSearch(e.target.value)
+}
 
 return (<>
   <NavBar/>
@@ -58,8 +66,7 @@ return (<>
       <Route>
         <Route path="/" element={<Home/>}/>
         <Route path="/location_finder" element={<LocationFinder/>}/>
-        <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade}
-        />}/>
+        <Route path="/store" element={<Store products={products} search={search} searchMade={searchMade} handleChange={handleChange} handleSearch={handleSearch}/>}/>
       </Route>
       <Store products={products}/>
   </div></>
