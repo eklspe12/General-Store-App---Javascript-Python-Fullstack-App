@@ -54,14 +54,12 @@ const formik = useFormik({
 
 
 return (
-<Formik initialValues={formik.initialValues} validationSchema={formik.validationSchema} onSubmit={formik.handleSubmit}>
-  <form>
+  <form onSubmit={formik.handleSubmit}>
   <div className="newLocationForm">
         <h1 className="formHeader">Add New Location</h1>
         <div>
             <label htmlFor="address">Address</label>
             <input type="text" name='address' value={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
-            <ErrorMessage name="address" components='div' classname="error"/>
             {formik.touched.address && formik.errors.address ? (
               <div className="error">{formik.errors.address}</div>
             ) : null}
@@ -70,7 +68,7 @@ return (
     <button type="submit">Add Location</button>
   </form>
     
-</Formik>
+
 )
 
 
