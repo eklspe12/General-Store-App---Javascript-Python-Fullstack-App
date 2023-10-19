@@ -1,5 +1,6 @@
 import ProductList from './ProductList'
 import AddProduct from './AddProduct';
+import AddLocation from './AddLocation';
 
 const Store = ({products, handleSearch, handleChange, search, searchMade, setProducts}) => {
 

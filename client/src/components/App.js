@@ -13,7 +13,6 @@ const [products, setProducts] = useState([])
 const [search, setSearch] = useState(null)
 const [searchMade, setSearchMade] = useState(false)
 const [originalProducts, setOriginalProducts] = useState([])
-const {route } = useParams();
 
 useEffect(() => {
   fetch("/products")
@@ -23,7 +22,7 @@ useEffect(() => {
       setOriginalProducts(products)
       console.log(products)} )
 
-}, [route]);
+}, []);
 
 const handleSearch = (e) => {
   e.preventDefault();
@@ -55,7 +54,7 @@ return (<>
         <Route exact path="/">
           <Home/>
         </Route>
-        <Route exact path="/">
+        <Route exact path="/location_finder">
           <LocationFinder/>
         </Route>
         <Route path="/store">

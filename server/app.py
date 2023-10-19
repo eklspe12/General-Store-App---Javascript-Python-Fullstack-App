@@ -103,6 +103,18 @@ class Locations(Resource):
         locations = [location.to_dict(rules=('-products', '-stocks'))for location in Location.query.all()]
         return make_response(locations, 200)
     
+    def post(self):
+        fields = request.get_json()
+        try:
+            location = Location(
+                address=fields['address'], 
+            )
+            db.session.add(location)
+            db.session.commit()
+            return make_response(location.to_dict(), 201)
+        except ValueError as e:
+            return make_response({'error':e.__str__()}, 400)
+    
 
 api.add_resource(Locations, '/locations')
 
@@ -117,6 +129,13 @@ class LocationById(Resource):
 api.add_resource(LocationById, '/locations/<int:id>')
 
 # Didn't see need for any other CRUD actions on location since user can't add, change, or delete locations
+
+class Stocks(Resource):
+    def get(self):
+        stocks = [stock.to_dict('-products', '-locations') for stock in Stock.query.all()]
+        return make_response(stocks, 200) 
+
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
