@@ -21,7 +21,7 @@ const AddProduct = ({products, setProducts}) => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        console.log('Submitting new product');
+        console.log('Submitting new product', values);
 
         const response = await fetch('/products', {
           method: "POST",
