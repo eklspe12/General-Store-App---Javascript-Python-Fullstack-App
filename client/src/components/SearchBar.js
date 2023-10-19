@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function App() {
+function SearchBar() {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
 
@@ -49,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default SearchBar;
