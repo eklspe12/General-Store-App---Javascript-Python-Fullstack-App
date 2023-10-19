@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function SearchBar() {
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("null");
   const [stocks, setStocks] = useState([]);
   const [originalStocks, setOriginalStocks] = useState([])
   const [searchMade, setSearchMade] = useState(false)
