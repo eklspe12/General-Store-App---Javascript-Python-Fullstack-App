@@ -73,11 +73,11 @@ class Stock(db.Model, SerializerMixin):
             return location_id
         raise ValueError('Must have a location ID.')
     
-    @validates('quantity')
-    def validates_quantity(self, key, quantity):
-        if not quantity or quantity < 0:
-            raise ValueError('Must include number for quantity. If item is out of stock enter 0.')
-        return quantity
+    # @validates('quantity')
+    # def validates_quantity(self, key, quantity):
+    #     if not quantity or quantity < 0:
+    #         raise ValueError('Must include number for quantity. If item is out of stock enter 0.')
+    #     return quantity
 
     def __repr__(self):
         return f'<Stock {self.name}>'

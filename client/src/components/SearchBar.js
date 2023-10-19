@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddStock from "./AddStock";
 
 function SearchBar() {
   const [search, setSearch] = useState(null);
@@ -51,6 +52,7 @@ function SearchBar() {
 
   return (
     <div>
+      <AddStock stocks={stocks} setStocks={setStocks}/>
       <input
         type="text"
         placeholder="Search for a product"
@@ -62,8 +64,8 @@ function SearchBar() {
       <ul>
         {stocks.map((stock) => (
           <li key={stock.id}>
-            <p>{stock.product.name}</p>
-            <p>{stock.location.address}</p>
+            <p>{stock.product ? stock.product.name : 'N/A'}</p>
+            <p>{stock.location ? stock.location.address : 'N/A'}</p>
             <p>Quantity: {stock.quantity}</p>
           </li>
         ))}
