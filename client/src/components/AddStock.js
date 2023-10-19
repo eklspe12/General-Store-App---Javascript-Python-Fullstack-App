@@ -1,67 +1,78 @@
-import React, {useEffect, useState} from "react";
+import {Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
+import * as Yup from 'yup';
+
+
+
 
 function AddStock({stocks, setStocks}) {
-    const [formData, setFormData] = useState({
-        product_id:"",
-        quantity:"",
-        location_id:""
-    });
+    const validationSchema = Yup.object().shape({
+        product_id: Yup.number()
+        .required('Product ID is required')
+        .positive('Product ID must be a postive number'),
+        quantity: Yup.number()
+        .typeError('Quantity must be a number')
+        .positive('Quantity must be a positive number')
+        .required('Quantity is required'),
+        location_id: Yup.number()
+        .positive('Location ID must be a number')
+        .required('Location ID is required')
+    })
 
-    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData, 
-            [name]:value,
-        });
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        const newStock = {
-            product_id: formData.product_id,
-            quantity: formData.quantity,
-            location_id: formData.location_id
-        };
-    
-        try {
-            console.log("Submitting new stock: ", newStock);
+    const formik = useFormik({
+        initialValues: {
+          product_id: '',
+          quantity: '',
+          location_id: '',
+        },
+        validationSchema,
+        onSubmit: async (values) => {
+          try {
+            console.log('Submitting new stock: ', values);
     
             const response = await fetch('/stocks', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newStock),
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(values),
             });
-            
-            if (response.ok) {
-                const data = await response.json();
-                setStocks([...stocks, data]);
     
-                setFormData({
-                    product_id: "",
-                    quantity: "",
-                    location_id: "",
-                });
+            if (response.ok) {
+              const data = await response.json();
+              setStocks([...stocks, data]);
+              formik.resetForm();
             } else {
-                console.error('Failed to add stock');
+              console.error('Failed to add stock');
             }
-        } catch (error) {
+          } catch (error) {
             console.error(`Error adding stock: ${error}`);
-        }
-    };
+          }
+        },
+      });
+
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
             <div className="newStockForm">
                 <h1 className="formHeader">Add New Product</h1>
+                <div>
                     <label htmlFor="product_id">Product ID</label>
-                    <input name="product_id" value={formData.product_id} onChange={handleChange}/>
-                    <label htmlFor="quantity">Quantity</label>
-                    <input name="quantity" value={formData.quantity} onChange={handleChange}/>
-                    <label htmlFor="location_id">Location ID</label>
-                    <input name="location_id" value={formData.location_id} onChange={handleChange}/>
+                    <input type="number" name="product_id" value={formik.values.product_id} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                    {formik.touched.product_id && formik.errors.product_id ? (
+                        <div className="error">{formik.errors.product_id}</div>
+                        ) : null}
+                    </div>    
+                    <div>
+                        <label htmlFor="quantity">Quantity</label>
+                        <input type='number' name="quantity" value={formik.values.quantity} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                        {formik.touched.quantity && formik.errors.quantity ? (
+                            <div className="error">{formik.errors.quantity}</div> ) : null}
+                    </div>
+                    <div>
+                        <label htmlFor="location_id">Location ID</label>
+                        <input type="number" name="location_id" value={formik.values.location_id} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                    </div>
+                    
             </div>
             <button type="submit">Add Product</button>
         </form>
