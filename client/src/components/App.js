@@ -43,9 +43,9 @@ const handleChange = (e) => {
   });
 }
 
-useEffect(() => {
-  console.log(search);
-}, [search]);
+// useEffect(() => {
+//   console.log(search);
+// }, [search]);
 
 return (<>
   <NavBar/>
