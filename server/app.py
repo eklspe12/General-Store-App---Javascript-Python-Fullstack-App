@@ -132,9 +132,19 @@ api.add_resource(LocationById, '/locations/<int:id>')
 
 class Stocks(Resource):
     def get(self):
-        stocks = [stock.to_dict('-products', '-locations') for stock in Stock.query.all()]
+        stocks = [stock.to_dict(rules=('-products', '-locations')) for stock in Stock.query.all()]
         return make_response(stocks, 200) 
 
+api.add_resource(Stocks, '/stocks')
+
+# class StocksByNameOrLocation(Resource):
+#     def get(self, name):
+#         stocks = Stock.query.filter(Stock.name == name)
+#         if stocks is None:
+#             return make_response({'error':'Inventory not found'}, 404)
+#         return make_response(stocks.to_dict(), 200)
+    
+# api.add_resource(StocksByNameOrLocation, '/stocks/search/<name>')
 
 
 if __name__ == '__main__':
