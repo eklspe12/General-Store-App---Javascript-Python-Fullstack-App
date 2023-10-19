@@ -134,6 +134,27 @@ class Stocks(Resource):
     def get(self):
         stocks = [stock.to_dict(rules=('-products', '-locations')) for stock in Stock.query.all()]
         return make_response(stocks, 200) 
+    
+    def post(self):
+        fields = request.get_json()
+        try:
+            quantity = int(fields['quantity'])
+            if quantity <0:
+                return make_response({'error':'Quantity must be >=0'}, 400)
+            
+            stock = Stock(
+                product_id=fields['product_id'],
+                quantity=quantity,
+                location_id=fields['location_id']
+            )
+            db.session.add(stock)
+            db.session.commit()
+            return make_response(stock.to_dict(), 201)
+        except ValueError as e:
+            return make_response({'error':e.__str__()})
+
+
+
 
 api.add_resource(Stocks, '/stocks')
 
