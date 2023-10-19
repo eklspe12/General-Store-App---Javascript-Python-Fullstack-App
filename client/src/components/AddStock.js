@@ -54,7 +54,7 @@ function AddStock({stocks, setStocks}) {
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className="newStockForm">
-                <h1 className="formHeader">Add New Product</h1>
+                <h1 className="formHeader">Add New Inventory</h1>
                 <div>
                     <label htmlFor="product_id">Product ID</label>
                     <input type="number" name="product_id" value={formik.values.product_id} onChange={formik.handleChange} onBlur={formik.handleBlur}/>

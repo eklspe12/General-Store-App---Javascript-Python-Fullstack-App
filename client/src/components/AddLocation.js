@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import {Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
+import * as Yup from 'yup';
+
 
 function AddLocation() {
 const [locations, setLocations] = useState([])
@@ -15,69 +18,59 @@ useEffect(() => {
 
 }, []);
 
-const [formData, setFormData] = useState({
-    address:""
+const validationSchema = Yup.object().shape({
+  address: Yup.string().required('Address is required'),
 });
-const [errors, setErrors] = useState([]);
 
-const handleChange = (e) => {
-const {name, value} = e.target;
-setFormData({
-    ...formData,
-    [name]: value,
-});
-}
+const formik = useFormik({
+  initialValues: {
+    address: '',
+  },
+  validationSchema,
+  onSubmit: async (values) => {
+    try {
+      console.log('Submitting new location:', values);
 
-function addLocation(newLocation) {
-setLocations([...locations, newLocation])
-}
-
-
-const handleSubmit = async (e) => {
-e.preventDefault();
-const newLocation = {
-    address:formData.address
-};
-
-try {
-    // Send a POST request to the server
-    console.log("Submitting new location:", newLocation);
-
-    const response = await fetch('/locations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newLocation),
-    });
-
-    if (response.ok) {
-      // If the request was successful, add the new location to the state
-      const data = await response.json();
-      setLocations([...locations, data]);
-
-      // Reset the form fields and errors
-      setFormData({
-        address:"",
+      const response = await fetch('/locations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       });
-    } else {
-      // Handle errors, e.g., show a message to the user
-      console.error('Failed to add location');
+
+      if (response.ok) {
+        const data = await response.json();
+        setLocations([...locations, data]);
+        formik.resetForm();
+      } else {
+        console.error('Failed to add location');
+      }
+    } catch (error) {
+      console.error(`Error adding location: ${error}`);
     }
-  } catch (error) {
-    console.error(`Error adding location: ${error}`);
-  }
-};
+  },
+});
+
 
 return (
-<form onSubmit={handleSubmit}>
-    <div className="newLocationForm">
+<Formik initialValues={formik.initialValues} validationSchema={formik.validationSchema} onSubmit={formik.handleSubmit}>
+  <form>
+  <div className="newLocationForm">
         <h1 className="formHeader">Add New Location</h1>
+        <div>
             <label htmlFor="address">Address</label>
-            <input name='address' value={formData.address} onChange={handleChange}/>
+            <input type="text" name='address' value={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+            <ErrorMessage name="address" components='div' classname="error"/>
+            {formik.touched.address && formik.errors.address ? (
+              <div className="error">{formik.errors.address}</div>
+            ) : null}
+    </div>
     </div>
     <button type="submit">Add Location</button>
-</form>
+  </form>
+    
+</Formik>
 )
 
 

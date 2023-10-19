@@ -1,81 +1,82 @@
 import React, {useState} from "react"
+import {Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
+import * as Yup from 'yup';
+
 
 const AddProduct = ({products, setProducts}) => {
-    const [formData, setFormData] = useState({
-        name:"",
-        image:"",
-        description:"",
-        price:"",
-    });
-    const [errors, setErrors] = useState([]);
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    description: Yup.string().required('Description is required'),
+    image: Yup.string().required('Image URL required'),
+    price: Yup.string().required('Price is required')
+  })
 
-const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData({
-        ...formData,
-        [name]: value,
-    });
-}
-
-function addProduct(newProduct) {
-    setProducts([...products, newProduct])
-}
-
-
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newProduct = {
-        name:formData.name,
-        description:formData.description,
-        image:formData.image,
-        price:formData.price,
-    };
-
-    try {
-        // Send a POST request to the server
-        console.log("Submitting new product:", newProduct);
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      description:'',
+      image:'',
+      price:''
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        console.log('Submitting new product');
 
         const response = await fetch('/products', {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(newProduct),
+          body: JSON.stringify(values),
         });
-  
         if (response.ok) {
-          // If the request was successful, add the new product to the state
           const data = await response.json();
           setProducts([...products, data]);
-  
-          // Reset the form fields and errors
-          setFormData({
-            name: "",
-            image: "",
-            description: "",
-            price: "",
-          });
+          formik.resetForm()
         } else {
-          // Handle errors, e.g., show a message to the user
-          console.error('Failed to add product');
+          console.error('Failed to add product')
         }
       } catch (error) {
-        console.error(`Error adding product: ${error}`);
+        console.error(`Error adding product: ${error}`)
       }
-    };
+    },
+  });
 
 return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
         <div className="newProductForm">
             <h1 className="formHeader">Add New Product</h1>
+            <div>
                 <label htmlFor="name">Name</label>
-                <input name='name' value={formData.name} onChange={handleChange}/>
+                <input type="text" name='name' value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.touched.name && formik.errors.name ? (
+                        <div className="error">{formik.errors.name}</div>
+                        ) : null}
+            </div>
+            <div>
                 <label htmlFor="description">Description</label>
-                <input name='description' value={formData.description} onChange={handleChange}/>
+                <input type="text" name='description' value={formik.values.description} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.touched.description && formik.errors.description ? (
+                        <div className="error">{formik.errors.description}</div>
+                        ) : null}
+            </div>
+            <div>
                 <label htmlFor="image">Image URL</label>
-                <input name="image" value={formData.image} onChange={handleChange}/>
+                <input type="text" name="image" value={formik.values.image} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.touched.image && formik.errors.image ? (
+                        <div className="error">{formik.errors.image}</div>
+                        ) : null}
+            </div>
+            <div>
                 <label htmlFor="price">Price</label>
-                <input name="price" value={formData.price} onChange={handleChange}/>   
+                <input type="number" name="price" value={formik.values.price} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+                {formik.touched.price && formik.errors.price ? (
+                        <div className="error">{formik.errors.price}</div>
+                        ) : null}
+            </div>
+                   
+        
         </div>
         <button type="submit">Add Product</button>
     </form>
