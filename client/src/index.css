@@ -5,27 +5,104 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+
+body, html {
+  background-color: rgb(255, 255, 230);
+  margin:0;
+  padding:0;
+}
+
+html {
+  background-color: rgb(220, 208, 240,);
+}
+
+.homepage {
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 70%;
+  color: rgb(209, 123, 246);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homeInfo {
+  /* margin-left: 120px; */
+  font-family: helvetica;
+  font-size: 30px;
+  font-weight: 100;
+  text-align: center;
+  padding-top: 10px;
+  width: 70%;
+  margin-top: -200px;
+}
+
+.contactInfo {
+  font-family: helvetica;
+  font-size: 24px;
+  font-weight:100;
+  text-align:center;
+  width: 100%;
+  padding-top:10px;
+  background-color: #ddf3fa;
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height:220px;
+}
+
 .nav {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)); /* Washed black fade background */
-  color: white;
+  background-color: rgba(220, 208, 240, 1);
+  color: blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
   padding: 0 1rem;
+  height: 60px;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  padding-top: 0;
+  padding-left: 0;
+  margin-top: 0;
+  margin-left: 0;
+  border-radius: 5px;
+  /* position: fixed; */
+  width:100%;
+  top:0;
+  left:0;
+  position: fixed;
+  z-index: 1000;
 }
 
 
 .nav ul {
-  padding: 0;
+  padding: 8px;
   margin: 0;
   list-style: none;
   display: flex;
   gap: 1rem;
 }
+
+
+/* nav li {
+  padding: 10;
+} */
+
+
 .nav a {
-  color: white; /* White text color */
+  color: blueviolet; /* White text color */
   text-decoration: none;
+  font-size: 26px;
   height: 100%;
   align-items: center;
   padding: 0.25rem;
@@ -33,7 +110,7 @@
 }
 
 .nav a:hover{
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #332e31, 0 0 40px #010101, 0 0 50px #dadadf;
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #c5c5c5, 0 0 40px #f692fafb, 0 0 5px #dadadf;
 }
 
 /* .searchBG{

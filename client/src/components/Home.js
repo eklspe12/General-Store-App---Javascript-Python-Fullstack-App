@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom"
 
 
@@ -5,15 +6,23 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
 
-    
+    useEffect(() => {
+        document.title = 'Home';
+      }, []);
 
     return (
         <div className="homepage">
-        <h1 className="logo">barNone</h1>
-        <p>A fun way to  
-            <Link to="/store" style={{cursor: 'pointer'}}><span> DISCOVER </span></Link>
-             </p>
+            <div className="homeInfo">
+                <p> Welcome to my general store demo app. The frontend was made from scratch with the use of React and Formik, while the backend was made with a combination of python and flask. For more information about how the site works, feel free to explore the other links, or checkout the Readme.</p>
+            </div>
+            <div className="contactInfo">
+                <p className="name">Spencer Eklund</p>
+                <p><a href='https://www.linkedin.com/in/spencer-eklund/' className="linkedin">LinkedIn</a></p>
+                <p><a href='https://github.com/eklspe12' className="github">Github</a></p>
+            </div>
+
         </div>
+
     )
 }
 

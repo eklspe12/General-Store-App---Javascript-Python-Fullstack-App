@@ -67,8 +67,6 @@ return (
     </div>
     <button type="submit">Add Location</button>
   </form>
-    
-
 )
 
 

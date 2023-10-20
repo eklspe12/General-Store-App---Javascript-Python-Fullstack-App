@@ -4,9 +4,16 @@ function NavBar() {
 return (
     <nav className="nav">
        <ul>
-        <Link to="/">Home</Link>
-        <Link to="/location_finder">Location Finder</Link>
-        <Link to="/store">Store</Link> 
+            <li>
+                <Link to="/">Home</Link>
+            </li>
+            <li>
+                 <Link to="/location_finder">Location Finder</Link>
+            </li>
+            <li>
+                <Link to="/store">Store</Link> 
+            </li>
+        
     </ul>
     </nav>  
 )
