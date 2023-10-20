@@ -13,7 +13,7 @@ const LocationFinder = () => {
 
     return (
         <div className="homepage">
-            <AddLocation/>
+            {/* <AddLocation/> */}
             <SearchBar/>
         </div>
     )

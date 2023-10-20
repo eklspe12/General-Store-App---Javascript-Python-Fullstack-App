@@ -54,27 +54,27 @@ function AddStock({stocks, setStocks}) {
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className="newStockForm">
-                <h1 className="formHeader">Add New Inventory</h1>
-                <div>
+                <h1 className="stockFormHeader">Add New Inventory</h1>
+                <div className='stockInput'>
                     <label htmlFor="product_id">Product ID</label>
                     <input type="number" name="product_id" value={formik.values.product_id} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                     {formik.touched.product_id && formik.errors.product_id ? (
                         <div className="error">{formik.errors.product_id}</div>
                         ) : null}
                     </div>    
-                    <div>
+                    <div className='stockInput'>
                         <label htmlFor="quantity">Quantity</label>
                         <input type='number' name="quantity" value={formik.values.quantity} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                         {formik.touched.quantity && formik.errors.quantity ? (
                             <div className="error">{formik.errors.quantity}</div> ) : null}
                     </div>
-                    <div>
+                    <div className='stockInput'>
                         <label htmlFor="location_id">Location ID</label>
                         <input type="number" name="location_id" value={formik.values.location_id} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                     </div>
                     
             </div>
-            <button type="submit">Add Product</button>
+            <button type="submit" className='addStockButton'>Add Product</button>
         </form>
     )
     

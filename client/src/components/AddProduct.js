@@ -44,42 +44,48 @@ const AddProduct = ({products, setProducts}) => {
   });
 
 return (
+  <div className="formContainer">
     <form onSubmit={formik.handleSubmit}>
         <div className="newProductForm">
             <h1 className="formHeader">Add New Product</h1>
-            <div>
+            <div className="formRow">
+            <div className="formGroup">
                 <label htmlFor="name">Name</label>
                 <input type="text" name='name' value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 {formik.touched.name && formik.errors.name ? (
                         <div className="error">{formik.errors.name}</div>
                         ) : null}
             </div>
-            <div>
+            <div className="formGroup">
                 <label htmlFor="description">Description</label>
                 <input type="text" name='description' value={formik.values.description} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 {formik.touched.description && formik.errors.description ? (
                         <div className="error">{formik.errors.description}</div>
                         ) : null}
             </div>
-            <div>
+            </div>
+            <div className="formRow">
+            <div className="formGroup">
                 <label htmlFor="image">Image URL</label>
                 <input type="text" name="image" value={formik.values.image} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 {formik.touched.image && formik.errors.image ? (
                         <div className="error">{formik.errors.image}</div>
                         ) : null}
             </div>
-            <div>
+            <div className="formGroup">
                 <label htmlFor="price">Price</label>
                 <input type="number" name="price" value={formik.values.price} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 {formik.touched.price && formik.errors.price ? (
                         <div className="error">{formik.errors.price}</div>
                         ) : null}
             </div>
+            </div>
                    
         
         </div>
-        <button type="submit">Add Product</button>
+        <button className="productButton" type="submit">Add Product</button>
     </form>
+    </div>
 )
 
 }

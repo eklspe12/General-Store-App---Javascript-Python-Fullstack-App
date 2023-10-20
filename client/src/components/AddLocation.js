@@ -54,10 +54,10 @@ const formik = useFormik({
 
 
 return (
-  <form onSubmit={formik.handleSubmit}>
+  <form onSubmit={formik.handleSubmit} className="addLocation">
   <div className="newLocationForm">
-        <h1 className="formHeader">Add New Location</h1>
-        <div>
+        <h1 className="locationFormHeader">Add New Location</h1>
+        <div className="inputField">
             <label htmlFor="address">Address</label>
             <input type="text" name='address' value={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
             {formik.touched.address && formik.errors.address ? (
@@ -65,7 +65,7 @@ return (
             ) : null}
     </div>
     </div>
-    <button type="submit">Add Location</button>
+    <button className='addLocButton' type="submit">Add Location</button>
   </form>
 )
 

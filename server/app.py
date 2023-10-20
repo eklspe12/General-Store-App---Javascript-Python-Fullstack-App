@@ -76,7 +76,7 @@ class ProductById(Resource):
     def patch(self, id):
         product = Product.query.get(id)
         if not product:
-            return jsonify({'error': 'Product not found'}), 404
+            return make_response({'error': 'Product not found'}, 404)
 
         data = request.get_json()
         for field, value in data.items():
@@ -84,7 +84,7 @@ class ProductById(Resource):
                 setattr(product, field, value)
 
         db.session.commit()
-        return jsonify({'message': 'Product updated successfully'}), 200
+        return make_response(product.to_dict(), 202)
         
     def delete(self, id):
         product = Product.query.filter(Product.id == id).one_or_none()

@@ -28,7 +28,7 @@ html {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: auto;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -85,6 +85,7 @@ html {
 }
 
 
+
 .nav ul {
   padding: 8px;
   margin: 0;
@@ -93,10 +94,6 @@ html {
   gap: 1rem;
 }
 
-
-/* nav li {
-  padding: 10;
-} */
 
 
 .nav a {
@@ -113,25 +110,176 @@ html {
   text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #c5c5c5, 0 0 40px #f692fafb, 0 0 5px #dadadf;
 }
 
-/* .searchBG{
-  /* add image later */
-/* }  */
 
 .searchBar {
-  margin-top: 20px;
-  margin-bottom: 20px;
   width: 600px;
-  top: 2%;
   background: rgba(39, 35, 35, 0.2);
   display: flex;
   align-items: center;
-  border-radius: 50px;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #feffff;
+  margin-top: 90px; /* Adjust the top margin to create space between the navigation bar and search bar */
+  position: relative; /* Ensure it's positioned relative to its parent */
+  z-index: 1; /* Ensure the search bar is above other content */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stockSearch {
+  width: 600px;
+  background: rgba(39, 35, 35, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
   box-shadow: 0 0 5px #feffff;
+  margin-top: 0px; /* Adjust the top margin to create space between the navigation bar and search bar */
+  position: relative; /* Ensure it's positioned relative to its parent */
+  z-index: 1; /* Ensure the search bar is above other content */
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.newStockForm {
+  text-align: center;
+}
+
+
+.addLocation{
+  text-align: center;
+}
+
+.newLocationForm {
+  font-size: 16px;
+}
+
+.inputField {
+margin-top: 10px;
+margin-bottom: 12px;
+}
+
+.stockInput {
+  margin-top: 10px;
+}
+
+.addStockButton {
+  align-items: center;
+  text-align: center;
+  display: block;
+margin: auto;
+  background-color: rgba(220, 208, 240, 1);
+  border: none;
+  color: white;
+  padding: 10px 24px;
+text-decoration: none;
+font-size: 16px;
+  margin-top: 10px;
+  color: blueviolet;
+}
+
+.addLocButton {
+align-items: center;
+text-align: center;
+display: block;
+margin: auto;
+background-color: rgba(220, 208, 240, 1);
+border: none;
+color: white;
+padding: 10px 24px;
+text-decoration: none;
+font-size: 16px;
+margin-top: 10px;
+color: blueviolet;
+margin-bottom: 0;
+}
+
+.productButton {
+  align-items: center;
+  text-align: center;
+  display: block;
+  margin: auto;
+  background-color: rgba(220, 208, 240, 1);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 10px;
+  color: blueviolet;
+
+}
+
+
+.stocks {
+  font-size: 16px;
+  color: black;
+  list-style-type: none;
+  text-align: center;
+  border-bottom: dashed;
+  }
+
+  .searchUl {
+    overflow: auto;
+    height: 300px;
+    border: dashed;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-left: none;
+    border-right: none;
+    border-width: 3px;
+  }
+  
+
+.addContainer {
+  display:flex;
+  align-items: flex-start;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 70px;
+}
+
+.addLocationContainer {
+  flex: 1;
+  /* margin-right: 13px; */
+  margin-top: 0px;
+
+}
+
+.addStockContainer {
+  flex: 1;
+  margin-top: 0px;
+
+}
+
+.formHeader {
+  margin-bottom: 0;
+}
+
+.locationFormHeader, .stockFormHeader{
+text-align: center;
+margin:0;
+padding:0;
+}
+
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the form content horizontally */
+  margin: 0 auto; /* Center the form horizontally within its container */
+  max-width: 600px; /* Adjust the maximum width as needed */
+  padding: 20px; /* Add some padding for better spacing */
+}
+
+.formContainer div {
+margin-top: 10px;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+color: blueviolet;
+font-size: 20px;
+
+}
 
 .searchInput{
   background: transparent;
@@ -149,18 +297,13 @@ html {
 }
 
 .searchBtn{
-  padding: 10px 20px;
+  padding: 20px 40px;
   border: 0;
   border-radius: 50%;
   background: none;
   color: white;
 }
 
-.searchBtn:hover{
-  font-size: 20px;
-  cursor: pointer;
-  transition: 500ms;
-}
 
 
 .storeContainer{
@@ -174,14 +317,13 @@ html {
 
 .searchError{
   position: absolute;
-  margin-top: 60px;
-  margin-left: 50px;
+  margin-top: 10px;
+  margin-left: -250px;
   top: 0;
   left: 0;
   font-size: 20px;
-  color: white;
+  color: blueviolet;
   font-family: helvetica;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #332e31, 0 0 40px #010101, 0 0 50px #dadadf, 0 0 60px #2674cd, 0 0 70px #01fcf8;
 }
 
 .productCard{
@@ -228,3 +370,8 @@ html {
   width: 100%;
  
 }
+
+.formGroup {
+  margin-bottom: 2px;
+}
+

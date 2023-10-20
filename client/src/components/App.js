@@ -24,8 +24,7 @@ useEffect(() => {
 
 }, []);
 
-const handleSearch = (e) => {
-  e.preventDefault();
+const handleSearch = (search) => {
 
   if (search) {
     const filteredProducts = originalProducts.filter((product) =>
