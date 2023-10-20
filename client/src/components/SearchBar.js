@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AddStock from "./AddStock";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import AddLocation from "./AddLocation";
 
 function SearchBar() {
   const [search, setSearch] = useState("");
@@ -65,8 +66,12 @@ function SearchBar() {
 
   return (
     <div>
-      <AddStock stocks={stocks} setStocks={setStocks}/>
-      <form onSubmit={formik.handleSubmit} className='searchBar'>
+      <div className="addContainer">
+        <div className="addStockContainer"><AddStock stocks={stocks} setStocks={setStocks}/>
+          </div>
+           <div className="addLocationContaienr"><AddLocation/></div> 
+           </div>
+      <form onSubmit={formik.handleSubmit} className='stockSearch' >
                 <input name="name" type="text" className='searchInput' placeholder='Search available items...' value={formik.values.search} onChange={formik.handleChange}></input>
                 {formik.touched.search && formik.errors.search ? (
                     <div className='searchError'>{formik.errors.search}</div>
@@ -75,12 +80,10 @@ function SearchBar() {
                 <input className='searchBtn' type="submit" value="Search products."></input>
             </form>
 
-      <ul>
+      <ul className="searchUl">
         {stocks.map((stock) => (
-          <li key={stock.id}>
-            <p>{stock.product ? stock.product.name : 'N/A'}</p>
-            <p>{stock.location ? stock.location.address : 'N/A'}</p>
-            <p>Quantity: {stock.quantity}</p>
+          <li className="stocks" key={stock.id}>
+            <p>{stock.product ? stock.product.name : 'N/A'}, Address:{stock.location ? stock.location.address : 'N/A'}, Quantity: {stock.quantity}</p>
           </li>
         ))}
       </ul>

@@ -32,6 +32,7 @@ const Store = ({products, handleSearch, handleChange, search, searchMade, setPro
 
     return (
         <div className='searchBG'>
+            <div className='searchContainer'>
             <form onSubmit={formik.handleSubmit} className='searchBar'>
                 <input name="search" type="text" className='searchInput' placeholder='Search available items...' value={formik.values.search} onChange={formik.handleChange}></input>
                 {formik.touched.search && formik.errors.search ? (
@@ -40,6 +41,7 @@ const Store = ({products, handleSearch, handleChange, search, searchMade, setPro
                
                 <input className='searchBtn' type="submit" value="Search products."></input>
             </form>
+            </div>
             <AddProduct products={products} setProducts={setProducts} />
             
             <div className='gridWrapper'>
