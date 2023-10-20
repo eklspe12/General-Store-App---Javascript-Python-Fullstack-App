@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
 import AddStock from "./AddStock";
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 function SearchBar() {
   const [search, setSearch] = useState("");
   const [stocks, setStocks] = useState([]);
   const [originalStocks, setOriginalStocks] = useState([])
   const [searchMade, setSearchMade] = useState(false)
+
+  const formik = useFormik({
+    initialValues:{
+        search:search,
+    },
+    validationSchema:Yup.object({
+        search:Yup.string().required('Please enter search term')
+    }),
+    onSubmit: (values) => {
+        handleSearch(values.search);
+    },
+});
 
 
 
@@ -29,7 +43,6 @@ function SearchBar() {
     }
 
     const filteredStocks = originalStocks.filter((stock) => {
-      // Check if the product name or location address includes the search query (case-insensitive)
       const productName = stock.product.name.toLowerCase();
       const locationAddress = stock.location.address.toLowerCase();
       const query = search.toLowerCase();
@@ -53,13 +66,14 @@ function SearchBar() {
   return (
     <div>
       <AddStock stocks={stocks} setStocks={setStocks}/>
-      <input
-        type="text"
-        placeholder="Search for a product"
-        value={search}
-        onChange={handleChange}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <form onSubmit={formik.handleSubmit} className='searchBar'>
+                <input name="name" type="text" className='searchInput' placeholder='Search available items...' value={formik.values.search} onChange={formik.handleChange}></input>
+                {formik.touched.search && formik.errors.search ? (
+                    <div className='searchError'>{formik.errors.search}</div>
+                ) : null }
+               
+                <input className='searchBtn' type="submit" value="Search products."></input>
+            </form>
 
       <ul>
         {stocks.map((stock) => (
