@@ -14,7 +14,6 @@ class Product(db.Model, SerializerMixin):
     image = db.Column(db.String)
     price = db.Column(db.Float)
 
-    # one-to-many relationship with reviews, might need to have it's own model called grill_reviews
 
     stocks = db.relationship('Stock', backref='product', cascade='all, delete-orphan')
 
