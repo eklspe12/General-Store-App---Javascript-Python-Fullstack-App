@@ -1,4 +1,3 @@
-# Standard library imports
 
 # Remote library imports
 from flask import Flask
