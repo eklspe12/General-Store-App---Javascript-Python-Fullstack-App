@@ -2,7 +2,7 @@
 
 ---
 
-## Authors
+## Author
 
 ### Spencer Eklund
 
