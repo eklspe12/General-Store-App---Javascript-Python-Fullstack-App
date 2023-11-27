@@ -128,8 +128,6 @@ class LocationById(Resource):
     
 api.add_resource(LocationById, '/locations/<int:id>')
 
-# Didn't see need for any other CRUD actions on location since user can't add, change, or delete locations
-
 class Stocks(Resource):
     def get(self):
         stocks = [stock.to_dict(rules=('-products', '-locations')) for stock in Stock.query.all()]
