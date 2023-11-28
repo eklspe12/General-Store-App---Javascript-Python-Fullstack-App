@@ -8,10 +8,10 @@ function NavBar() {
 					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<Link to="/location_finder">Location Finder</Link>
+					<Link to="/store">View/Modify Products</Link>
 				</li>
 				<li>
-					<Link to="/store">View/Modify Products</Link>
+					<Link to="/location_finder">Location Finder</Link>
 				</li>
 			</ul>
 		</nav>

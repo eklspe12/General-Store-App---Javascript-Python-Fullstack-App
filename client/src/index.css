@@ -16,9 +16,7 @@ html {
 .locationFinder {
 	font-size: 26px;
 	font-family: Arial, Helvetica, sans-serif;
-	width: 70%;
 	color: rgb(209, 123, 246);
-	position: fixed;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -35,6 +33,7 @@ html {
 .locationFinder {
 	justify-content: space-between;
 	margin-top: 50px;
+	margin-left: 0px;
 }
 
 .homeInfo {
@@ -156,52 +155,6 @@ html {
 	margin-top: 10px;
 }
 
-.addStockButton {
-	align-items: center;
-	text-align: center;
-	display: block;
-	margin: auto;
-	background-color: rgba(220, 208, 240, 1);
-	border: none;
-	color: white;
-	padding: 10px 24px;
-	text-decoration: none;
-	font-size: 16px;
-	margin-top: 10px;
-	color: blueviolet;
-}
-
-.addLocButton {
-	align-items: center;
-	text-align: center;
-	display: block;
-	margin: auto;
-	background-color: rgba(220, 208, 240, 1);
-	border: none;
-	color: white;
-	padding: 10px 24px;
-	text-decoration: none;
-	font-size: 16px;
-	margin-top: 10px;
-	color: blueviolet;
-	margin-bottom: 0;
-}
-
-.productButton {
-	align-items: center;
-	text-align: center;
-	display: block;
-	margin: auto;
-	background-color: rgba(220, 208, 240, 1);
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-decoration: none;
-	font-size: 20px;
-	margin-top: 10px;
-	color: blueviolet;
-}
-
 .stocks {
 	font-size: 16px;
 	color: black;
@@ -223,7 +176,6 @@ html {
 
 .addContainer {
 	display: flex;
-	align-items: flex-start;
 	font-size: 16px;
 	margin-bottom: 10px;
 	margin-top: 70px;
@@ -237,11 +189,13 @@ html {
 .addLocation {
 	text-align: center;
 	height: 100px;
-	justify-content: center;
+	/* justify-content: center; */
 }
+
 .addStockContainer {
 	flex: 1;
 	margin-top: 0px;
+	margin-left: 0px;
 }
 
 .locationFormHeader,
@@ -363,4 +317,161 @@ html {
 
 .formGroup {
 	margin-bottom: 2px;
+}
+
+.editForm input {
+	margin-bottom: 15px;
+}
+
+.editForm h3 {
+	background-color: lightcyan;
+	color: purple;
+	padding: 8px;
+	border-radius: 12px;
+	width: 200px;
+}
+
+.productCard h2 {
+	background-color: rgba(220, 208, 240, 1);
+	color: purple;
+	padding: 8px;
+	border-radius: 12px;
+	margin-bottom: 0px;
+	margin-top: 8px;
+	width: 270px;
+}
+
+.editBtn,
+.deleteBtn,
+.saveBtn,
+.viewBtn {
+	border: none;
+	font-size: large;
+	margin-bottom: 5px;
+	padding: 8px;
+	background-color: rgba(220, 208, 240, 1);
+	border-radius: 12px;
+	color: purple;
+}
+
+.deleteBtn,
+.editBtn {
+	background-color: lightcyan;
+}
+
+.deleteBtn:hover {
+	cursor: pointer;
+	background-color: rgb(232, 250, 250);
+}
+.editBtn:hover {
+	cursor: pointer;
+	background-color: rgb(232, 250, 250);
+}
+
+.saveBtn:hover {
+	background-color: rgb(226, 220, 236);
+	cursor: pointer;
+}
+.viewBtn:hover {
+	background-color: rgb(226, 220, 236);
+	cursor: pointer;
+}
+
+.editBtn:active {
+	background-color: rgb(194, 251, 251);
+}
+.deleteBtn:active {
+	background-color: rgb(194, 251, 251);
+}
+
+.saveBtn:active {
+	background-color: rgb(194, 171, 233);
+}
+
+.viewBtn:active {
+	background-color: rgb(194, 171, 233);
+}
+
+.productButton {
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-decoration: none;
+	font-size: 20px;
+	margin-top: 10px;
+	color: blueviolet;
+	border-radius: 8px;
+}
+.productButton:active {
+	background-color: rgb(194, 171, 233);
+}
+
+.productButton:hover {
+	background-color: rgb(226, 220, 236);
+	cursor: pointer;
+}
+
+.addLocButton {
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 10px;
+	color: blueviolet;
+	margin-bottom: 0;
+	border-radius: 12px;
+}
+
+.addLocButton:active {
+	background-color: rgb(194, 171, 233);
+}
+
+.addLocButton:hover {
+	background-color: rgb(226, 220, 236);
+	cursor: pointer;
+}
+
+.addStockButton {
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 10px;
+	color: blueviolet;
+	border-radius: 12px;
+}
+
+.addStockButton:active {
+	background-color: rgb(194, 171, 233);
+}
+
+.addStockButton:hover {
+	background-color: rgb(226, 220, 236);
+	cursor: pointer;
+}
+
+.productCard img {
+	margin-top: 0px;
+}
+
+.productCard h4 {
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
