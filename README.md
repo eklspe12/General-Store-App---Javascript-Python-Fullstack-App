@@ -1,8 +1,8 @@
-### General Store Website
+# King of the Grill - General Store Demo
 
 ---
 
-## Authors
+## Author
 
 ### Spencer Eklund
 
@@ -14,6 +14,12 @@
 ## Introduction
 
 This program serves as a demo app for an online store users could use to track inventory and products. The front-end is made with React and Formik while the back-end was made with Python, Flask, and SQL. Continue reading for an explanation of each page, followed by detailed explanation of each file.
+
+---
+
+## Getting Started
+
+Before you start this application you will need to install a few things. Navigate to the root folder and run "npm install" and "pipenv install". When these have finished downloading, you can start the frontend by navigating to the client folder and running "npm start". To start the backend, open a new tab in your terminal and run "pipenv shell", followed by "python seed.py", and finally "python app.py".
 
 ---
 
@@ -47,11 +53,11 @@ Contains form for adding Locations. Form text field is validated with formik. Wh
 
 ### AddProduct.js
 
-Contains form for adding new Products. Form input is validated with formik. When the 'Add Product" button is clicked, a POST request is sent to add the new location to the backend database.
+Contains form for adding new Products. Form input is validated with formik to ensure all fields have content of correct type. A message is displayed to the user if an input field is blank or contains the wrong data type. When the 'Add Product" button is clicked, a POST request is sent to add the new location to the backend database.
 
 ### AddStock.js
 
-Contains form for adding new products. All form input fields utilize formik for validation. When the "Add Product" button is clicked, a POST request is sent to add new product to the backend database.
+Contains form for adding new products. All form input fields utilize formik for validation. An error message is shown to the user if an input field is blank or the wrong data type. Location ID and Product ID is also validated to ensure the user entered an existing ID before moving on. When the "Add Product" button is clicked, a POST request is sent to add new product to the backend database.
 
 ### App.js
 
@@ -71,7 +77,7 @@ Holds React router links that navigate users to other pages on website.
 
 ### ProductCard.js
 
-Receives individual products as well as functions to assit with deleting and updating products. One side fo product card displays product name, description, image, price, a button for removing the product, and a button for editing the product. If the user clicks the "Remove from catalog" button then delete patch is sent to remove it from the database, then the products state is updated on the front end to remove the product for the user as well. The edit product button changes the class of the card which in changes the display to a form. Whatever the user enters in the form will be be sent to the backend as a PATCH request when the user clicks save. The save button also automatically changes the card over to show updated values.
+Receives individual products as well as functions to assit with deleting and updating products. One side fo product card displays product name, description, image, price, a button for removing the product, and a button for editing the product. If the user clicks the "Remove from catalog" button then delete patch is sent to remove it from the database, then the products state is updated on the front end to remove the product for the user as well. The edit product button changes the class of the card which in changes the display to a form that is controlled with formik. Whatever the user enters in the form will be be sent to the backend as a PATCH request when the user clicks save. The save button also automatically changes the card over to show updated values.
 
 ### ProductList.js
 

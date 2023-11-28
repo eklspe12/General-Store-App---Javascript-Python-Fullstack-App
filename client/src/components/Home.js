@@ -10,11 +10,11 @@ const Home = () => {
 			<div className="homeInfo">
 				<p>
 					{' '}
-					Welcome to my general store demo app. The frontend was made from
-					scratch with the use of React and Formik, while the backend was made
-					with a combination of python and flask. For more information about how
-					the site works, feel free to explore the other links, or checkout the
-					Readme.
+					Welcome to 'King of the Grill' a general store demo app. The frontend
+					was made from scratch with the use of React and Formik, while the
+					backend was made with a combination of python and flask. For more
+					information about how the site works, feel free to explore the other
+					links, or checkout the Readme.
 				</p>
 			</div>
 			<div className="contactInfo">
