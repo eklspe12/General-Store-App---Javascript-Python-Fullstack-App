@@ -21,28 +21,6 @@ function App() {
 			});
 	}, []);
 
-	const handleSearch = (search) => {
-		if (search) {
-			const filteredProducts = originalProducts.filter((product) =>
-				product.name.toLowerCase().includes(search.toLowerCase())
-			);
-			setProducts(filteredProducts);
-		} else {
-			setProducts(originalProducts);
-		}
-		setSearchMade(true);
-	};
-
-	const handleChange = (e) => {
-		setSearch(e.target.value, () => {
-			// console.log(search)
-		});
-	};
-
-	// useEffect(() => {
-	//   console.log(search);
-	// }, [search]);
-
 	return (
 		<>
 			<NavBar />
@@ -59,9 +37,10 @@ function App() {
 							products={products}
 							search={search}
 							searchMade={searchMade}
-							handleChange={handleChange}
-							handleSearch={handleSearch}
+							setSearch={setSearch}
 							setProducts={setProducts}
+							setSearchMade={setSearchMade}
+							originalProducts={originalProducts}
 						/>
 					</Route>
 				</Switch>

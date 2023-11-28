@@ -1,377 +1,366 @@
 :root {
-  --bg: #282c34;
-  --header: #fff;
-  --link: #61dafb;
-  --text: hsla(0, 0%, 100%, 0.88);
+	--bg: #282c34;
+	--header: #fff;
+	--link: #61dafb;
+	--text: hsla(0, 0%, 100%, 0.88);
 }
 
-
-body, html {
-  background-color: rgb(255, 255, 230);
-  margin:0;
-  padding:0;
-}
-
+body,
 html {
-  background-color: rgb(220, 208, 240,);
+	background-color: rgb(255, 255, 230);
+	margin: 0;
+	padding: 0;
 }
 
-.homepage {
-  font-size: 26px;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 70%;
-  color: rgb(209, 123, 246);
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+.homepage,
+.locationFinder {
+	font-size: 26px;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 70%;
+	color: rgb(209, 123, 246);
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	overflow: auto;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.locationFinder {
+	justify-content: space-between;
+	margin-top: 50px;
 }
 
 .homeInfo {
-  /* margin-left: 120px; */
-  font-family: helvetica;
-  font-size: 30px;
-  font-weight: 100;
-  text-align: center;
-  padding-top: 10px;
-  width: 70%;
-  margin-top: -200px;
+	font-family: helvetica;
+	font-size: 30px;
+	font-weight: 100;
+	text-align: center;
+	padding-top: 10px;
+	width: 70%;
+	margin-top: -200px;
 }
 
 .contactInfo {
-  font-family: helvetica;
-  font-size: 24px;
-  font-weight:100;
-  text-align:center;
-  width: 100%;
-  padding-top:10px;
-  background-color: #ddf3fa;
-  bottom: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  height:220px;
+	font-family: helvetica;
+	font-size: 24px;
+	font-weight: 100;
+	text-align: center;
+	width: 100%;
+	padding-top: 10px;
+	background-color: #ddf3fa;
+	bottom: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 220px;
 }
 
 .nav {
-  background-color: rgba(220, 208, 240, 1);
-  color: blue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 1rem;
-  height: 60px;
-  font-family: "Trebuchet MS", Tahoma, sans-serif;
-  padding-top: 0;
-  padding-left: 0;
-  margin-top: 0;
-  margin-left: 0;
-  border-radius: 5px;
-  /* position: fixed; */
-  width:100%;
-  top:0;
-  left:0;
-  position: fixed;
-  z-index: 1000;
+	background-color: rgba(220, 208, 240, 1);
+	color: blue;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+	padding: 0 1rem;
+	height: 60px;
+	font-family: 'Trebuchet MS', Tahoma, sans-serif;
+	padding-top: 0;
+	padding-left: 0;
+	margin-top: 0;
+	margin-left: 0;
+	border-radius: 5px;
+	/* position: fixed; */
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 1000;
 }
-
-
 
 .nav ul {
-  padding: 8px;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+	padding: 8px;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	gap: 1rem;
 }
-
-
 
 .nav a {
-  color: blueviolet; /* White text color */
-  text-decoration: none;
-  font-size: 26px;
-  height: 100%;
-  align-items: center;
-  padding: 0.25rem;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White glow text shadow */
+	color: blueviolet;
+	text-decoration: none;
+	font-size: 26px;
+	height: 100%;
+	align-items: center;
+	padding: 0.25rem;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.nav a:hover{
-  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #c5c5c5, 0 0 40px #f692fafb, 0 0 5px #dadadf;
+.nav a:hover {
+	text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 2px #c5c5c5, 0 0 40px #f692fafb,
+		0 0 5px #dadadf;
 }
-
 
 .searchBar {
-  width: 600px;
-  background: rgba(39, 35, 35, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #feffff;
-  margin-top: 90px; /* Adjust the top margin to create space between the navigation bar and search bar */
-  position: relative; /* Ensure it's positioned relative to its parent */
-  z-index: 1; /* Ensure the search bar is above other content */
-  margin-left: auto;
-  margin-right: auto;
+	width: 600px;
+	background: rgba(39, 35, 35, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #feffff;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 1;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .stockSearch {
-  width: 600px;
-  background: rgba(39, 35, 35, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #feffff;
-  margin-top: 0px; /* Adjust the top margin to create space between the navigation bar and search bar */
-  position: relative; /* Ensure it's positioned relative to its parent */
-  z-index: 1; /* Ensure the search bar is above other content */
-  margin-left: auto;
-  margin-right: auto;
+	width: 600px;
+	background: rgba(39, 35, 35, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #feffff;
+	margin-top: 0px;
+	position: relative;
+	z-index: 1;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .newStockForm {
-  text-align: center;
-}
-
-
-.addLocation{
-  text-align: center;
+	text-align: center;
 }
 
 .newLocationForm {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 .inputField {
-margin-top: 10px;
-margin-bottom: 12px;
+	margin-top: 10px;
+	margin-bottom: 12px;
 }
 
 .stockInput {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 .addStockButton {
-  align-items: center;
-  text-align: center;
-  display: block;
-margin: auto;
-  background-color: rgba(220, 208, 240, 1);
-  border: none;
-  color: white;
-  padding: 10px 24px;
-text-decoration: none;
-font-size: 16px;
-  margin-top: 10px;
-  color: blueviolet;
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 10px;
+	color: blueviolet;
 }
 
 .addLocButton {
-align-items: center;
-text-align: center;
-display: block;
-margin: auto;
-background-color: rgba(220, 208, 240, 1);
-border: none;
-color: white;
-padding: 10px 24px;
-text-decoration: none;
-font-size: 16px;
-margin-top: 10px;
-color: blueviolet;
-margin-bottom: 0;
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 10px;
+	color: blueviolet;
+	margin-bottom: 0;
 }
 
 .productButton {
-  align-items: center;
-  text-align: center;
-  display: block;
-  margin: auto;
-  background-color: rgba(220, 208, 240, 1);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-decoration: none;
-  font-size: 20px;
-  margin-top: 10px;
-  color: blueviolet;
-
+	align-items: center;
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: rgba(220, 208, 240, 1);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-decoration: none;
+	font-size: 20px;
+	margin-top: 10px;
+	color: blueviolet;
 }
 
-
 .stocks {
-  font-size: 16px;
-  color: black;
-  list-style-type: none;
-  text-align: center;
-  border-bottom: dashed;
-  }
+	font-size: 16px;
+	color: black;
+	list-style-type: none;
+	text-align: center;
+	border-bottom: dashed;
+}
 
-  .searchUl {
-    overflow: auto;
-    height: 300px;
-    border: dashed;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-left: none;
-    border-right: none;
-    border-width: 3px;
-  }
-  
+.searchUl {
+	overflow: auto;
+	height: 300px;
+	border: dashed;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: none;
+	border-right: none;
+	border-width: 3px;
+}
 
 .addContainer {
-  display:flex;
-  align-items: flex-start;
-  font-size: 16px;
-  margin-bottom: 10px;
-  margin-top: 70px;
+	display: flex;
+	align-items: flex-start;
+	font-size: 16px;
+	margin-bottom: 10px;
+	margin-top: 70px;
 }
 
 .addLocationContainer {
-  flex: 1;
-  /* margin-right: 13px; */
-  margin-top: 0px;
-
+	flex: 1;
+	margin-top: 0px;
+	justify-content: center;
 }
-
+.addLocation {
+	text-align: center;
+	height: 100px;
+	justify-content: center;
+}
 .addStockContainer {
-  flex: 1;
-  margin-top: 0px;
-
+	flex: 1;
+	margin-top: 0px;
 }
 
-.formHeader {
-  margin-bottom: 0;
+.locationFormHeader,
+.stockFormHeader {
+	text-align: center;
+	margin: 0;
+	padding: 0;
 }
-
-.locationFormHeader, .stockFormHeader{
-text-align: center;
-margin:0;
-padding:0;
-}
-
 
 .formContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the form content horizontally */
-  margin: 0 auto; /* Center the form horizontally within its container */
-  max-width: 600px; /* Adjust the maximum width as needed */
-  padding: 20px; /* Add some padding for better spacing */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 600px;
+	margin-top: 50px;
+	padding-top: 0px;
 }
 
 .formContainer div {
-margin-top: 10px;
-text-align: center;
-font-family: Arial, Helvetica, sans-serif;
-color: blueviolet;
-font-size: 20px;
-
+	margin-top: 10px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	color: blueviolet;
+	font-size: 20px;
+}
+.formHeader {
+	margin-bottom: 0;
+	padding-top: 10px;
+}
+.newProductForm {
+	background-color: lightcyan;
+	padding: 15px;
+	padding-top: 0px;
+	border-radius: 15px;
+}
+.searchInput {
+	background: transparent;
+	width: 500px;
+	flex: 1;
+	border: none;
+	outline: none;
+	padding: 15px 20px;
+	font-size: 20px;
+	color: white;
+}
+::placeholder {
+	color: white;
 }
 
-.searchInput{
-  background: transparent;
-  width: 500px;
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 15px 20px;
-  font-size: 20px;
-  color: white;
-  
-}
-  ::placeholder{
-    color: white;
+.searchBtn {
+	padding: 20px 40px;
+	border: 0;
+	border-radius: 50%;
+	background: none;
+	color: white;
 }
 
-.searchBtn{
-  padding: 20px 40px;
-  border: 0;
-  border-radius: 50%;
-  background: none;
-  color: white;
+.storeContainer {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
 }
 
-
-
-.storeContainer{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* row-gap: 10px; */
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+.searchError {
+	position: absolute;
+	margin-top: 10px;
+	margin-left: -250px;
+	top: 0;
+	left: 0;
+	font-size: 20px;
+	color: blueviolet;
+	font-family: helvetica;
 }
 
-.searchError{
-  position: absolute;
-  margin-top: 10px;
-  margin-left: -250px;
-  top: 0;
-  left: 0;
-  font-size: 20px;
-  color: blueviolet;
-  font-family: helvetica;
-}
-
-.productCard{
-  text-align: center;
-  backface-visibility: hidden;
-  transition: transform 1s ease;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-  border: 1px dotted #80808084; 
-  height:520px;
-  width: 320px;
-  color:black;
-  font-family: Verdana;
-  box-shadow: 0 0 5px #feffff;
+.productCard {
+	text-align: center;
+	backface-visibility: hidden;
+	transition: transform 1s ease;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px dotted #80808084;
+	height: 520px;
+	width: 320px;
+	color: black;
+	font-family: Verdana;
+	box-shadow: 0 0 5px #feffff;
 }
 
 .productCard h3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 100;
 }
 
 .productCard h4 {
-  display: flex;
-  text-align: left;
-  font-weight: 100;
-  padding-left: 5px;
+	display: flex;
+	text-align: left;
+	font-weight: 100;
+	padding-left: 5px;
 }
 
 .productCard img {
-  
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  box-shadow: 0 0 5px #feffff;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	box-shadow: 0 0 5px #feffff;
 }
 
-.gridWrapper{
-  display: flex;
-  justify-content: center;
-  width: 100%;
- 
+.gridWrapper {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
 .formGroup {
-  margin-bottom: 2px;
+	margin-bottom: 2px;
 }
-

@@ -26,7 +26,7 @@ db.init_app(app)
 
 api = Api(app)
 
-# Views go here!
+
 
 @app.route('/')
 def index():
