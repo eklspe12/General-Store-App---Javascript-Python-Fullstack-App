@@ -1,23 +1,16 @@
-import { Link } from "react-router-dom"
-import AddLocation from "./AddLocation"
-import SearchBar from "./SearchBar"
-import React, {useEffect} from 'react'
-
-
+import SearchBar from './SearchBar';
+import React, { useEffect } from 'react';
 
 const LocationFinder = () => {
+	useEffect(() => {
+		document.title = 'Find Locations';
+	}, []);
 
-    useEffect(() => {
-        document.title = 'Find Locations';
-      }, []);
+	return (
+		<div className="locationFinder">
+			<SearchBar />
+		</div>
+	);
+};
 
-    return (
-        <div className="homepage">
-            {/* <AddLocation/> */}
-            <SearchBar/>
-        </div>
-    )
-}
-
-
-export default LocationFinder
+export default LocationFinder;

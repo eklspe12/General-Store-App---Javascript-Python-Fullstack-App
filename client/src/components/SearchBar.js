@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 import AddLocation from './AddLocation';
 
 function SearchBar() {
-	// const [search, setSearch] = useState("");
 	const [stocks, setStocks] = useState([]);
 	const [searchedTerm, setSearchedTerm] = useState('');
+	const [filteredStocks, setFilteredStocks] = useState([]);
 
 	const formik = useFormik({
 		initialValues: {
@@ -29,14 +29,23 @@ function SearchBar() {
 				console.log(stocks);
 			});
 	}, []);
-	//checkpoint
-	const filteredStocks = stocks.filter((stock) => {
-		const productName = stock.product.name.toLowerCase();
-		const locationAddress = stock.location.address.toLowerCase();
-		const query = searchedTerm.toLowerCase();
 
-		return productName.includes(query) || locationAddress.includes(query);
-	});
+	useEffect(() => {
+		const filtered = stocks.filter((stock) => {
+			const productName = stock.product.name.toLowerCase();
+			const locationAddress = stock.location.address.toLowerCase();
+			const query = searchedTerm.toLowerCase();
+
+			return productName.includes(query) || locationAddress.includes(query);
+		});
+
+		setFilteredStocks(filtered);
+	}, [searchedTerm, stocks]);
+
+	const handleSearchChange = (event) => {
+		formik.handleChange(event);
+		setSearchedTerm(event.target.value);
+	};
 
 	return (
 		<div>
@@ -55,7 +64,7 @@ function SearchBar() {
 					className="searchInput"
 					placeholder="Search available items..."
 					value={formik.values.search}
-					onChange={formik.handleChange}
+					onChange={handleSearchChange}
 				/>
 				{formik.touched.search && formik.errors.search ? (
 					<div className="searchError">{formik.errors.search}</div>

@@ -26,7 +26,7 @@ db.init_app(app)
 
 api = Api(app)
 
-# Views go here!
+
 
 @app.route('/')
 def index():
@@ -127,8 +127,6 @@ class LocationById(Resource):
         return make_response(location.to_dict(), 200)
     
 api.add_resource(LocationById, '/locations/<int:id>')
-
-# Didn't see need for any other CRUD actions on location since user can't add, change, or delete locations
 
 class Stocks(Resource):
     def get(self):

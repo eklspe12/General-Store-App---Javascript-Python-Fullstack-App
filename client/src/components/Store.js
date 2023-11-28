@@ -1,11 +1,18 @@
 import ProductList from './ProductList';
 import AddProduct from './AddProduct';
-import AddLocation from './AddLocation';
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-const Store = ({ products, handleSearch, search, searchMade, setProducts }) => {
+const Store = ({
+	setSearch,
+	setSearchMade,
+	products,
+	search,
+	searchMade,
+	setProducts,
+	originalProducts,
+}) => {
 	const formik = useFormik({
 		initialValues: {
 			search: search,
@@ -37,9 +44,29 @@ const Store = ({ products, handleSearch, search, searchMade, setProducts }) => {
 	useEffect(() => {
 		document.title = 'Products';
 	}, []);
+	const handleSearch = (search) => {
+		setSearchMade(!!search.trim());
+		if (search.trim() === '') {
+			setProducts(originalProducts);
+		} else {
+			const filteredProducts = originalProducts.filter((product) =>
+				product.name.toLowerCase().includes(search.toLowerCase())
+			);
+			setProducts(filteredProducts);
+		}
+	};
+
+	const handleChange = (e) => {
+		const { value } = e.target;
+		formik.handleChange(e);
+		setSearch(value);
+		handleSearch(value);
+	};
 
 	return (
 		<div className="searchBG">
+			<AddProduct products={products} setProducts={setProducts} />
+
 			<div className="searchContainer">
 				<form onSubmit={formik.handleSubmit} className="searchBar">
 					<input
@@ -48,7 +75,7 @@ const Store = ({ products, handleSearch, search, searchMade, setProducts }) => {
 						className="searchInput"
 						placeholder="Search available items..."
 						value={formik.values.search}
-						onChange={formik.handleChange}
+						onChange={handleChange}
 					></input>
 					{formik.touched.search && formik.errors.search ? (
 						<div className="searchError">{formik.errors.search}</div>
@@ -61,7 +88,6 @@ const Store = ({ products, handleSearch, search, searchMade, setProducts }) => {
 					></input>
 				</form>
 			</div>
-			<AddProduct products={products} setProducts={setProducts} />
 
 			<div className="gridWrapper">
 				<div className="storeContainer">
