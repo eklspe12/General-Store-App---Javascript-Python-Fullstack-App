@@ -32,7 +32,7 @@ const Store = ({
 
 	function updateProduct(updatedProduct) {
 		const updatedProducts = products.map((product) => {
-			if (product.id != updatedProduct.id) {
+			if (product.id !== updatedProduct.id) {
 				return product;
 			} else {
 				return updatedProduct;
