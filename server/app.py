@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
-from models import db, Product, Location, Stock
+from server.models import db, Product, Location, Stock
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask import Flask, make_response, jsonify, request
@@ -157,15 +157,6 @@ class Stocks(Resource):
 
 
 api.add_resource(Stocks, '/stocks')
-
-# class StocksByNameOrLocation(Resource):
-#     def get(self, name):
-#         stocks = Stock.query.filter(Stock.name == name)
-#         if stocks is None:
-#             return make_response({'error':'Inventory not found'}, 404)
-#         return make_response(stocks.to_dict(), 200)
-    
-# api.add_resource(StocksByNameOrLocation, '/stocks/search/<name>')
 
 
 if __name__ == '__main__':
