@@ -4,8 +4,6 @@ import * as Yup from 'yup';
 
 const ProductCard = ({ product, onDelete, updateProduct }) => {
 	const [isFlipped, setIsFlipped] = useState(false);
-	const [editedProduct, setEditedProduct] = useState({ ...product });
-
 	const handleClick = () => {
 		setIsFlipped(!isFlipped);
 	};
@@ -36,36 +34,15 @@ const ProductCard = ({ product, onDelete, updateProduct }) => {
 			});
 	};
 
-	const handleSubmit = () => {
-		fetch(`/products/${editedProduct.id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(editedProduct),
-		})
-			.then((r) => {
-				if (r.status === 202) {
-					return r.json().then((p) => {
-						updateProduct(p);
-						setIsFlipped(!isFlipped);
-					});
-				}
-			})
-
-			.catch((error) => {
-				console.error('Network error:', error);
-			});
-	};
 
 	return (
 		<div className={isFlipped ? 'cardback' : 'productCard'}>
 			{isFlipped ? (
 				<Formik
-					initialValues={editedProduct}
+					initialValues={product}
 					validationSchema={validationSchema}
 					onSubmit={(values, { setSubmitting }) => {
-						fetch(`/products/${editedProduct.id}`, {
+						fetch(`/products/${product.id}`, {
 							method: 'PATCH',
 							headers: {
 								'Content-Type': 'application/json',
