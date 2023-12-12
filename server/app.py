@@ -7,6 +7,8 @@ from flask_migrate import Migrate
 from flask import Flask, make_response, jsonify, request
 from flask_cors import CORS
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
