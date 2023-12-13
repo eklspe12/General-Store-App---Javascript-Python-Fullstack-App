@@ -4,7 +4,7 @@
 from server.models import db, Product, Location, Stock
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
-from flask import Flask, make_response, jsonify, request
+from flask import Flask, make_response, jsonify, request, render_template
 from flask_cors import CORS
 import os
 from dotenv import load_dotenv
@@ -15,7 +15,10 @@ DATABASE = os.environ.get(
     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+    static_url_path='',
+    static_folder='../client/build',
+    template_folder='../client/build')
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.jsonify_compatibility = False
@@ -31,8 +34,9 @@ api = Api(app)
 
 
 @app.route('/')
-def index():
-    return '<h1>Project Server</h1>'
+@app.route('/<int:id>')
+def index(id=0):
+    return render_template("index.html")
 
 class Products(Resource):
     def get(self):
